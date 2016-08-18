@@ -1,8 +1,6 @@
 package webdriver;
 
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
+import org.testng.annotations.*;
 
 public class BaseTest {
     protected static Browser browser;
@@ -15,7 +13,7 @@ public class BaseTest {
         browser.navigate(Browser.getBaseUrl());
     }
 
-    @AfterClass
+    @AfterSuite
     public void after() {
         if (browser.isBrowserAlive()) {
             browser.exit();

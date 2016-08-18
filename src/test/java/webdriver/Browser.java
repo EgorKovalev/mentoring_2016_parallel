@@ -1,6 +1,9 @@
 package webdriver;
 
 import org.openqa.selenium.WebDriver;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class Browser {
@@ -10,6 +13,7 @@ public class Browser {
 
     private static Browser instance;
     private static WebDriver driver;
+    private static List<WebDriver> driverslist = new ArrayList<WebDriver>();
 
     public static PropertiesManager props;
     public static Browsers currentBrowser;
@@ -32,16 +36,14 @@ public class Browser {
         props = new PropertiesManager(PROPERTIES_FILE);
         currentBrowser = Browsers.valueOf(browserName.toUpperCase());
         driver = BrowserFactory.setUp(currentBrowser);
+        driverslist.add(driver);
     }
 
     public void exit() {
-        try {
-            driver.quit();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            instance = null;
+        for (WebDriver dr:driverslist) {
+            dr.quit();
         }
+        driverslist.clear();
     }
 
     protected void info(final String message) {
@@ -57,7 +59,7 @@ public class Browser {
     }
 
     public boolean isBrowserAlive() {
-        return instance != null;
+        return !driverslist.isEmpty();
     }
 
     public WebDriver getDriver(){
