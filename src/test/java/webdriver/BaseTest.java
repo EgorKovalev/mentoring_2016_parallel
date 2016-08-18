@@ -17,10 +17,10 @@ public class BaseTest {
 
     @AfterClass
     public void after() {
-        /*if (browser.isBrowserAlive()) {
+        if (browser.isBrowserAlive()) {
             browser.exit();
             killProcess();
-        }*/
+        }
     }
 
     public void killProcess() {

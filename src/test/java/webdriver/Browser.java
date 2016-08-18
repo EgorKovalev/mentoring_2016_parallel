@@ -31,7 +31,7 @@ public class Browser {
     private static void initProperties(String browserName){
         props = new PropertiesManager(PROPERTIES_FILE);
         currentBrowser = Browsers.valueOf(browserName.toUpperCase());
-        driver = BrowserFactory.setUp(browserName);
+        driver = BrowserFactory.setUp(currentBrowser);
     }
 
     public void exit() {
