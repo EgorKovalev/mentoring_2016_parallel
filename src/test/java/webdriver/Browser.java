@@ -25,6 +25,14 @@ public class Browser {
         return System.getProperty("urlLoginPage", props.getProperty("urlLoginPage"));
     }
 
+    public static String getUsername(){
+        return System.getProperty("userName", props.getProperty("userName"));
+    }
+
+    public static String getPassword(){
+        return System.getProperty("password", props.getProperty("password"));
+    }
+
     public static Browser getInstance(String browserName) {
         initProperties(browserName);
         driver.manage().timeouts().implicitlyWait(IMPLICITY_WAIT, TimeUnit.SECONDS);
@@ -62,7 +70,7 @@ public class Browser {
         return !driverslist.isEmpty();
     }
 
-    public WebDriver getDriver(){
+    public static WebDriver getDriver(){
         return driver;
     }
 

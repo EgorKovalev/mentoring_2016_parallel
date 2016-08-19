@@ -1,1 +1,1 @@
-java -jar selenium-server-standalone-2.53.1.jar -Dwebdriver.chrome.driver=chromedriver.exe -role node -hub http://localhost:6666/grid/register
+java -jar selenium-server-standalone-2.53.1.jar -Dwebdriver.chrome.driver=chromedriver.exe -role node -hub http://10.143.12.247:6666/grid/register
