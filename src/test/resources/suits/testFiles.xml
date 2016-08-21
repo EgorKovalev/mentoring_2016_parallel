@@ -8,11 +8,11 @@
         </classes>
     </test>
 
-    <test name="Chrome tests">
+    <!--<test name="Chrome tests">
         <parameter name="browser" value="chrome"/>
         <classes>
             <class name="tests.thomsonReuters.TestRunner"></class>
         </classes>
-    </test>
+    </test>-->
 
 </suite>
