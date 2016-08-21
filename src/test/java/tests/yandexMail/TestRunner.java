@@ -19,23 +19,42 @@ public class TestRunner extends BaseTest {
 
         MailPage mailPage = new MailPage();
         Assert.assertTrue(mailPage.getCurrentEmailBoxName().contains(username));
-
         mainPage.logOutUser();
     }
 
     @Test (priority = 2)
-    public void createNewMessage(){
+    public void createNewMessageAndSaveInDraft(){
         MainPage mainPage = new MainPage();
         mainPage.authorizeUser();
 
         MailPage mailPage = new MailPage();
+        int itemsNumber = mailPage.getItemsNumber("Черновики");
         mailPage.clickToolbarItem("Написать");
 
         NewMessagePage newMessagePage = new NewMessagePage();
         newMessagePage.createNewMessage();
         newMessagePage.clickTopmenuItem("Почта");
-
         mailPage.saveChanges();
+
+        Assert.assertTrue(mailPage.getItemsNumber("Черновики") != itemsNumber);
+        mainPage.logOutUser();
+    }
+
+    @Test (priority = 2)
+    public void createNewMessageAndDoNotSave(){
+        MainPage mainPage = new MainPage();
+        mainPage.authorizeUser();
+
+        MailPage mailPage = new MailPage();
+        int itemsNumber = mailPage.getItemsNumber("Черновики");
+        mailPage.clickToolbarItem("Написать");
+
+        NewMessagePage newMessagePage = new NewMessagePage();
+        newMessagePage.createNewMessage();
+        newMessagePage.clickTopmenuItem("Почта");
+        mailPage.doNotSaveChanges();
+
+        Assert.assertTrue(mailPage.getItemsNumber("Черновики") == itemsNumber);
         mainPage.logOutUser();
     }
 }
