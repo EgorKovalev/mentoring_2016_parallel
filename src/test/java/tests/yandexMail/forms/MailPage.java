@@ -1,4 +1,4 @@
-package parallelTests.forms;
+package tests.yandexMail.forms;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -8,6 +8,8 @@ import webdriver.BaseForm;
 
 public class MailPage extends BaseForm {
     private final static By titleLocator = By.xpath("//div[contains(@class,'b-toolbar__block_chevron')]");
+    private ToolbarMenu toolbarMenu = new ToolbarMenu();
+    private PopupBox popupBox = new PopupBox();
 
     public MailPage() {
         super(titleLocator);
@@ -19,5 +21,17 @@ public class MailPage extends BaseForm {
 
     public String getCurrentEmailBoxName(){
         return mailBoxName.getText();
+    }
+
+    public void clickToolbarItem(String name){
+        toolbarMenu.getItem(name).click();
+    }
+
+    public void saveChanges(){
+        popupBox.getItem("Сохранить").click();
+    }
+
+    public void doNotSaveChanges(){
+        popupBox.getItem("Не сохранять").click();
     }
 }

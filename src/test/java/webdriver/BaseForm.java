@@ -3,6 +3,7 @@ package webdriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -37,5 +38,10 @@ public abstract class BaseForm {
         } catch (Throwable error) {
             logger.error("Page loading error");
         }
+    }
+
+    public void clickViaJS(WebElement element){
+        JavascriptExecutor executor = (JavascriptExecutor)driver;
+        executor.executeScript("arguments[0].click();", element);
     }
 }

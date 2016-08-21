@@ -21,8 +21,12 @@ public class Browser {
 
     private Browser() {  }
 
-    public static String getBaseUrl(){
-        return System.getProperty("urlLoginPage", props.getProperty("urlLoginPage"));
+    public static String getBaseChromeUrl(){
+        return System.getProperty("urlChrome", props.getProperty("urlChrome"));
+    }
+
+    public static String getBaseFirefoxUrl(){
+        return System.getProperty("urlFirefox", props.getProperty("urlFirefox"));
     }
 
     public static String getUsername(){
@@ -74,7 +78,7 @@ public class Browser {
         return driver;
     }
 
-    public static String getBrowserName(){
+    public String getBrowserName(){
         return currentBrowser.toString();
     }
 

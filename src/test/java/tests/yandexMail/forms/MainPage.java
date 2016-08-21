@@ -1,4 +1,4 @@
-package parallelTests.forms;
+package tests.yandexMail.forms;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -8,6 +8,7 @@ import webdriver.BaseForm;
 
 public class MainPage extends BaseForm {
     private final static By titleLocator = By.xpath("//div[contains(@class,'container__search container__line')]");
+    private TopMenu topMenu = new TopMenu();
 
     public MainPage() {
         super(titleLocator);
@@ -37,5 +38,10 @@ public class MainPage extends BaseForm {
         passwordInput.clear();
         passwordInput.sendKeys(password);
         submitButton.click();
+    }
+
+    public void logOutUser(){
+        topMenu.waitForPageToLoad();
+        topMenu.logOut();
     }
 }

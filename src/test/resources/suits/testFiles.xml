@@ -4,15 +4,15 @@
     <test name="FireFox tests">
         <parameter name="browser" value="firefox"/>
         <classes>
-            <class name="parallelTests.ParallelTests1" ></class>
+            <class name="tests.yandexMail.TestRunner" ></class>
         </classes>
     </test>
 
-    <!--<test name="Chrome tests">
+    <test name="Chrome tests">
         <parameter name="browser" value="chrome"/>
         <classes>
-            <class name="parallelTests.ParallelTests2" ></class>
+            <class name="tests.thomsonReuters.TestRunner"></class>
         </classes>
-    </test>-->
+    </test>
 
 </suite>

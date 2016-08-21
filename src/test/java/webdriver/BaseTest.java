@@ -10,7 +10,13 @@ public class BaseTest {
     public void before(String browserName) {
         browser = Browser.getInstance(browserName);
         browser.windowMaximise();
-        browser.navigate(Browser.getBaseUrl());
+
+        if (browserName.equals("chrome")){
+            browser.navigate(Browser.getBaseChromeUrl());
+        }
+        else{
+            browser.navigate(Browser.getBaseFirefoxUrl());
+        }
     }
 
     @AfterSuite
