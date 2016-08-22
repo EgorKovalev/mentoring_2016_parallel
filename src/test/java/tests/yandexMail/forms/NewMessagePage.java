@@ -25,4 +25,10 @@ public class NewMessagePage extends BaseForm {
     public void createNewMessage(){
         subjectInput.sendKeys("test email");
     }
+
+    public void createNewMessage(String to, String text){
+        waitForPageToLoad();
+        sendKeyViaActions(to);
+        subjectInput.sendKeys(text);
+    }
 }

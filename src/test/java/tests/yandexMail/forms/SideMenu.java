@@ -2,6 +2,7 @@ package tests.yandexMail.forms;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import webdriver.BaseForm;
 
@@ -22,5 +23,9 @@ public class SideMenu extends BaseForm {
         catch(NoSuchElementException ex){
             return "0";
         }
+    }
+
+    public WebElement getItem(String name){
+        return driver.findElement(By.xpath(String.format(itemsPath, name)));
     }
 }

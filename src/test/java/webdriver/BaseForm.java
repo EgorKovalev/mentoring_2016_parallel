@@ -1,10 +1,9 @@
 package webdriver;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public abstract class BaseForm {
@@ -14,6 +13,8 @@ public abstract class BaseForm {
     protected static WebDriver driver = Browser.getDriver();
     protected static String userName = Browser.getUsername();
     protected static String password = Browser.getPassword();
+    private static JavascriptExecutor js = (JavascriptExecutor)driver;
+    private static Actions actions = new Actions(driver);
 
     protected BaseForm(final By titleLoc){
         waitForPageToLoad();
@@ -38,6 +39,14 @@ public abstract class BaseForm {
         } catch (Throwable error) {
             logger.error("Page loading error");
         }
+    }
+
+    public void sendKeysViaJS(WebElement element, String value){
+        js.executeScript("arguments[0].setAttribute('value', '" + value +"')", element);
+    }
+
+    public void sendKeyViaActions(String text){
+        actions.sendKeys(text).build().perform();
     }
 
     public void clickViaJS(WebElement element){

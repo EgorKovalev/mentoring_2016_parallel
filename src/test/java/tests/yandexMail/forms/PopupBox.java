@@ -14,7 +14,14 @@ public class PopupBox extends BaseForm {
         PageFactory.initElements(driver, this);
     }
 
-    public WebElement getItem(String name){
-        return driver.findElement(By.xpath(String.format(itemPath, name)));
+    public void clickButton(String name){
+        WebElement element = driver.findElement(By.xpath(String.format(itemPath, name)));
+        if(element.isEnabled()){
+            element.click();
+        }
+    }
+
+    public boolean isDisplayed(){
+        return driver.findElement(titleLocator).isDisplayed();
     }
 }
