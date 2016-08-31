@@ -29,14 +29,6 @@ public class Browser {
         return System.getProperty("urlFirefox", props.getProperty("urlFirefox"));
     }
 
-    public static String getUsername(){
-        return System.getProperty("userName", props.getProperty("userName"));
-    }
-
-    public static String getPassword(){
-        return System.getProperty("password", props.getProperty("password"));
-    }
-
     public static Browser getInstance(String browserName) {
         initProperties(browserName);
         driver.manage().timeouts().implicitlyWait(IMPLICITY_WAIT, TimeUnit.SECONDS);

@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import webdriver.BaseForm;
+import webdriver.User;
 
 public class MainPage extends BaseForm {
     private final static By titleLocator = By.xpath("//div[contains(@class,'container__search container__line')]");
@@ -26,9 +27,9 @@ public class MainPage extends BaseForm {
 
     public void authorizeUser(){
         loginInput.clear();
-        loginInput.sendKeys(userName);
+        loginInput.sendKeys(user.getUsername());
         passwordInput.clear();
-        passwordInput.sendKeys(password);
+        passwordInput.sendKeys(user.getPassword());
         submitButton.click();
     }
 

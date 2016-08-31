@@ -11,8 +11,7 @@ public abstract class BaseForm {
     protected By titleLocator;
     protected static Logger logger = Logger.getInstance();
     protected static WebDriver driver = Browser.getDriver();
-    protected static String userName = Browser.getUsername();
-    protected static String password = Browser.getPassword();
+    protected static User user = new User();
     private static JavascriptExecutor js = (JavascriptExecutor)driver;
     private static Actions actions = new Actions(driver);
 
@@ -22,7 +21,7 @@ public abstract class BaseForm {
     }
 
     public static String getUserName(){
-        return userName;
+        return user.getUsername();
     }
 
     public void waitForPageToLoad() {
